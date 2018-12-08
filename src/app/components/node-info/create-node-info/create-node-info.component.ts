@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { NodeInfo } from '../../../models/node-info';
@@ -23,7 +24,8 @@ export class CreateNodeInfoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private nodeInfoService: NodeInfoService
+    private nodeInfoService: NodeInfoService,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
@@ -49,5 +51,8 @@ export class CreateNodeInfoComponent implements OnInit {
       new NodeInfo(
         'node1', '10-10-2018', '19:00:00', 1, 1, 1, 1
       ));
+    return this.http.get(`http://localhost:8080/create-node-info/1/23/41/32/542`).subscribe(data => {
+      console.log(data);
+    });
   }
 }

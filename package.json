@@ -23,6 +23,7 @@
     "@angular/router": "~7.0.0",
     "angularfire2": "5.0.0-rc.12-next",
     "core-js": "^2.5.4",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "firebase": "5.7.0",
     "path": "^0.12.7",
