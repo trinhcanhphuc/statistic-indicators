@@ -34,11 +34,16 @@ export class NodeInfoService extends Service {
         return nodeInfos.map(a => {
           const data = a.payload.val();
           const key = a.payload.key;
-          console.log(key, data);
           return {key, data};
         });
       }),
       catchError(this.handleError<any>(`getNodeInfo`))
     );
   }
+
+  createNodeInfo(userId: number, nodeInfo: NodeInfo) {
+    const users = this.fireDb.list('users');
+    users.push('user3');
+  }
+
 }

@@ -28,7 +28,7 @@ export class ProductComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getNodeInfo(1);
+    this.getNodeInfo(1, this.userNodeInfos);
   }
 
   getAllUsers() {
@@ -43,29 +43,23 @@ export class ProductComponent implements OnInit {
     this.nodeInfoService.getAll().subscribe(nodeInfos => this.nodeInfos = nodeInfos);
   }
 
-  getNodeInfo(userId: number) {
+  getNodeInfo(userId: number, userNodeInfos: NodeInfo[]) {
     this.nodeInfoService.getUserNodeInfo(userId).subscribe(nodeInfos => {
-      console.log(nodeInfos);
-      console.log(Object.keys(nodeInfos));
       nodeInfos.forEach(function(dateData) {
-        console.log(dateData);
         const timeData = Object.keys(dateData.data).map(function(k) {
           return { 'key': k, 'value': dateData.data[k]};
         });
-        console.log(timeData);
         timeData.forEach(function(data) {
-          console.log('dateData.key ' + dateData.key);
-          console.log('data.key ' + data.key);
-          console.log('data.value.node1.Soil.Moisture ' + data.value.node1.Soil.Moisture);
-          // this.userNodeInfos.push(
-          //   new NodeInfo(
-          //     dateData.key,
-          //     data.key,
-          //     data.value.node1.Soil.Moisture,
-          //     data.value.node1.Soil.Temperature,
-          //     data.value.node1.Air.Humidity,
-          //     data.value.node1.Air.Temperature)
-          // );
+          userNodeInfos.push(
+            new NodeInfo(
+              'node1',
+              dateData.key,
+              data.key,
+              data.value.node1.Soil.Moisture,
+              data.value.node1.Soil.Temperature,
+              data.value.node1.Air.Humidity,
+              data.value.node1.Air.Temperature)
+          );
         });
       });
     });

@@ -16,6 +16,10 @@ import { HomeComponent } from './components/home/home.component';
 import { IntroduceComponent } from './components/introduce/introduce.component';
 import { ProductComponent } from './components/product/product.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { CreateNodeInfoComponent } from './components/node-info/create-node-info/create-node-info.component';
+import { ListNodeInfoComponent } from './components/node-info/list-node-info/list-node-info.component';
+import { DeleteNodeInfoComponent } from './components/node-info/delete-node-info/delete-node-info.component';
+import { EditNodeInfoComponent } from './components/node-info/edit-node-info/edit-node-info.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     HomeComponent,
     IntroduceComponent,
     ProductComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    CreateNodeInfoComponent,
+    ListNodeInfoComponent,
+    DeleteNodeInfoComponent,
+    EditNodeInfoComponent
   ],
   imports: [
     BrowserModule,
